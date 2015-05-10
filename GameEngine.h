@@ -11,22 +11,26 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-
+#include "Shader.h"
 #include <stdio.h>
 #include <iostream>
 
 class GameEngine{
-    
+    GLFWwindow* window;
     int WIDTH = 800;
     int HEIGHT = 600;
+    GLuint VBO, VAO;
+    
 public:
     GameEngine();
     ~GameEngine();
     
     void GameMain();
-    void render();
+    void input();
+    static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
+    void render(float interpolation);
     void update();
-    
+   
 };
 
 
