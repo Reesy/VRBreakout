@@ -13,16 +13,19 @@
 #include "Shader.h"
 #include "GameObject.h"
 class RenderObject : public GameObject {
+    bool initialised;
+    Shader testShader;
+    GLfloat vertices[];
     
 public:
     RenderObject();
     ~RenderObject();
     
-    void draw();
+    void draw(glm::mat4 view, glm::mat4 projection);
     void drawBounds();
     void setShader(Shader);
-    void setVertices(GLfloat inVerts[]);
-    
+   
+    void init(GLfloat inVerts[], Shader);
 };
 
 

@@ -15,6 +15,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "Shader.h"
 #include "GameObject.h"
+#include "RenderObject.h"
 #include <stdio.h>
 #include <iostream>
 

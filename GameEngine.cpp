@@ -53,7 +53,13 @@ void GameEngine::GameMain(){
         glViewport(0, 0, WIDTH, HEIGHT);
     
         Shader mainShader("resources/VertexShader.vert", "resources/FragmentShader.frag");
+    
+        RenderObject redSquare;
+        redSquare.init(vertices, mainShader);
+    
+    
         GLint modelLocation = glGetUniformLocation(mainShader.Program, "model");
+        //send these two as arguments to objects draw function. <<these are shared by many objects >>
         GLint viewLocation = glGetUniformLocation(mainShader.Program, "view");
         GLint projectionLocation = glGetUniformLocation(mainShader.Program, "projection");
         int TICKS_PER_SECOND = 25;
@@ -63,7 +69,7 @@ void GameEngine::GameMain(){
         int loops;
         float interpolation;
         double next_game_tick = glfwGetTime();
-        GameObject redSquare;
+    
         glGenVertexArrays(1, &VAO);
         glGenBuffers(1, &VBO);
         // Bind the Vertex Array Object first, then bind and set vertex buffer(s) and attribute pointer(s).
