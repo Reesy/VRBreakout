@@ -8,6 +8,8 @@
 
 #ifndef __VRBreakout__GameEngine__
 #define __VRBreakout__GameEngine__
+#pragma unmanaged
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>

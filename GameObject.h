@@ -10,6 +10,7 @@
 #define __VRBreakout__GameObject__
 
 #include <stdio.h>
+
 #include <glm/glm.hpp>
 #include "LevelLoader.h"
 #include "GameObject.h"

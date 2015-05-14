@@ -9,6 +9,4 @@
 #ifndef __VRBreakout__LevelLoader__
 #define __VRBreakout__LevelLoader__
 
-#include <stdio.h>
-
 #endif /* defined(__VRBreakout__LevelLoader__) */
