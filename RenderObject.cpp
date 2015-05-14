@@ -24,7 +24,7 @@ RenderObject::~RenderObject(){
 void RenderObject::draw(glm::mat4 view, glm::mat4 projection){
     if(this->initialised){
         
-        this->testShader.Use();
+     //   this->testShader.Use();
        
         glm::mat4 model;
 
@@ -54,7 +54,7 @@ void RenderObject::drawBounds(){
 
 void RenderObject::setShader(Shader drawShader){
     
-    this->testShader = drawShader;
+//    this->testShader = drawShader;
     
 }
 

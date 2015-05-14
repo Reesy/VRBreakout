@@ -14,7 +14,7 @@
 #include "GameObject.h"
 class RenderObject : public GameObject {
     bool initialised;
-    Shader testShader;
+   // Shader testShader;
     GLfloat vertices[];
     
 public:
