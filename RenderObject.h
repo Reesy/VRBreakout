@@ -21,7 +21,7 @@ public:
     RenderObject();
     ~RenderObject();
     
-    void draw(glm::mat4 view, glm::mat4 projection);
+    void draw(glm::mat4 &view, glm::mat4 &projection);
     void drawBounds();
     void setShader(Shader);
    
