@@ -5,7 +5,9 @@
 //  Created by James Rees on 10/05/2015.
 //  Copyright (c) 2015 James Rees. All rights reserved.
 //
-
+#ifdef __MINGW32__
+#include "stdafx.h"
+#endif
 #include "RenderObject.h"
 
 RenderObject::RenderObject(){

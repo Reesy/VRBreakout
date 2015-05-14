@@ -6,8 +6,10 @@
  **
  ****************************************************/
 
-#include <iostream>
-
+//#include <iostream>
+#ifdef __MINGW32__
+#include "stdafx.h"
+#endif
 #include "TextureLoader.h"
 
 
