@@ -25,14 +25,14 @@ class GameEngine{
     GLFWwindow* window;
     int WIDTH = 800;
     int HEIGHT = 600;
-    GLuint VBO, VAO;
+ 
     glm::mat4 model;
     glm::mat4 view;
     glm::mat4 projection;
-    
+	
     double xpos, ypos;
     
- 
+	RenderObject redSquare;
     
 public:
     GameEngine();
