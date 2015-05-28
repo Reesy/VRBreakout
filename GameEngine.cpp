@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 James Rees. All rights reserved.
 
 #include "GameEngine.h"
-
+float ballvelocity;
+float velocity = 0.01;
 GameEngine::GameEngine(){
     
     //main entry point
@@ -102,16 +103,21 @@ void GameEngine::key_callback(GLFWwindow* window, int key, int scancode, int act
     }
     if (key == GLFW_KEY_UP && action == GLFW_PRESS){
 		
+	
     }
     if (key == GLFW_KEY_DOWN && action == GLFW_PRESS){
 		
     }
     if (key == GLFW_KEY_LEFT && action == GLFW_PRESS){
-        
-    }
+		ballvelocity = -0.1;
+	}
+
     if (key == GLFW_KEY_RIGHT && action == GLFW_PRESS){
-        
-    }
+		ballvelocity = 0.1;
+
+	}
+
+
 }
 
 
@@ -140,7 +146,7 @@ void GameEngine::update(){
 	}
 	
 	paddle.translateX(velocity);
-
+	ball.translateX(ballvelocity);
 }
 
 void GameEngine::debugMode(){

@@ -33,11 +33,12 @@ class GameEngine{
 
     double xpos, ypos;
     
-	SquareObject paddle;
-	SquareObject ball;
+	
 	
 public:
-	float velocity = 0.01;
+	SquareObject paddle;
+	SquareObject ball;
+
     GameEngine();
     ~GameEngine();
     
