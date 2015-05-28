@@ -53,43 +53,36 @@ void GameEngine::GameMain(){
 		
 		Shader mainShader("resources/VertexShader.vert", "resources/FragmentShader.frag");
 	
-
+		
         
-        redSquare.init(vertices, mainShader);
-    
-  
-        int TICKS_PER_SECOND = 25;
-        int SKIP_TICKS = 1000 / TICKS_PER_SECOND;
-        std::cout << "Skip ticks: " << SKIP_TICKS << std::endl;
-        int MAX_FRAMESKIP = 5;
-        int loops;
-        float interpolation;
-        double next_game_tick = glfwGetTime();
+        paddle.init(vertices, mainShader);
+		paddle.setColor(0.5f, 0.0f, 0.0f);
+		paddle.setSize(0.5, 0.04, 1.0);
+		paddle.translateY(-12);
 
+		ball.init(vertices, mainShader);
+		ball.setColor(0.0f, 0.0f, 1.0f);
+		ball.setSize(0.02, 0.02, 1.0);
+	
+		std::cout << "Right : " << paddle.getBounds().right << std::endl;
+		std::cout << "Left : " << paddle.getBounds().left << std::endl;
+		std::cout << "Up : " << paddle.getBounds().up << std::endl;
+		std::cout << "Down : " << paddle.getBounds().down << std::endl;
+		std::cout << "Front : " << paddle.getBounds().front << std::endl;
+		std::cout << "Back : " << paddle.getBounds().back << std::endl;
+     
         projection = glm::perspective(45.0f, (GLfloat)WIDTH / (GLfloat)HEIGHT, 0.1f, 100.0f);
-        view = glm::translate(view, glm::vec3(0, 0, -2));
+		
+        view = glm::translate(view, glm::vec3(0, 0, -1));
 
         // main loop
         while (!glfwWindowShouldClose(window)){
-            loops = 0;
-            glfwPollEvents();
-          //  glm::mat4 model;
-            
-           // model = glm::scale(model, glm::vec3(0.8, 0.25 ,1));
            
-		
-            while(glfwGetTime() > next_game_tick && loops < MAX_FRAMESKIP){
-                update();
-                next_game_tick += SKIP_TICKS;
-                loops++;
-                
-            }
-            
-            glfwGetCursorPos(window, &xpos, &ypos);
-            
-            interpolation = float(glfwGetTime() + SKIP_TICKS - next_game_tick) / float(SKIP_TICKS);
-          //  mainShader.Use();
-            render(interpolation);
+            glfwPollEvents();
+			update();
+			glfwGetCursorPos(window, &xpos, &ypos);
+			 
+            render();
 			
         }
     
@@ -97,7 +90,7 @@ void GameEngine::GameMain(){
 }
 
 void GameEngine::input(){
-    
+	
 }
 
 void GameEngine::key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
@@ -105,13 +98,13 @@ void GameEngine::key_callback(GLFWwindow* window, int key, int scancode, int act
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
     if (key == GLFW_KEY_SPACE && action == GLFW_PRESS){
-        
+		
     }
     if (key == GLFW_KEY_UP && action == GLFW_PRESS){
-        
+		
     }
     if (key == GLFW_KEY_DOWN && action == GLFW_PRESS){
-        
+		
     }
     if (key == GLFW_KEY_LEFT && action == GLFW_PRESS){
         
@@ -123,22 +116,30 @@ void GameEngine::key_callback(GLFWwindow* window, int key, int scancode, int act
 
 
 
-void GameEngine::render(float interpolation){
+void GameEngine::render(){
 
-    //position = position + speed
-    //view_position = position + (speed * interpolation)
+	//clears screen
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //render code here
-
-	redSquare.draw(this->view, this->projection);
-
+	//render code:
+	
+	paddle.draw(this->view, this->projection);
+	ball.draw(this->view, this->projection);
     glfwSwapBuffers(window);
 	
 }
 
 void GameEngine::update(){
-    
+	if (paddle.getBounds().right > 2){
+		
+		velocity = -0.01;
+	}
+	
+	if (paddle.getBounds().left < -2){
+		velocity = 0.01;
+	}
+	
+	paddle.translateX(velocity);
 
 }
 

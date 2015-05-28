@@ -18,23 +18,26 @@
 #include "Shader.h"
 #include "GameObject.h"
 #include "RenderObject.h"
+#include "SquareObject.h"
 #include <stdio.h>
 #include <iostream>
 
 class GameEngine{
     GLFWwindow* window;
-    int WIDTH = 800;
-    int HEIGHT = 600;
+    int WIDTH = 1600;
+    int HEIGHT = 900;
  
     glm::mat4 model;
     glm::mat4 view;
     glm::mat4 projection;
-	
+
     double xpos, ypos;
     
-	RenderObject redSquare;
-    
+	SquareObject paddle;
+	SquareObject ball;
+	
 public:
+	float velocity = 0.01;
     GameEngine();
     ~GameEngine();
     
@@ -42,7 +45,7 @@ public:
     void input();
     static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
     
-    void render(float interpolation);
+    void render();
     void update();
     void debugMode();
    

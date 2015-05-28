@@ -19,18 +19,22 @@
 #include "GameObject.h"
 
 class RenderObject : public GameObject {
-	Shader localShader; 
-    bool initialised;
-	GLuint VBO, VAO;
-	GLint modelLocation;
-	GLint viewLocation;
-	GLint projectionLocation;
-	GLfloat vertices[];
+	
 
 
 	
 
 public:
+	Shader localShader;
+	bool initialised;
+	GLuint VBO, VAO;
+	GLint modelLocation;
+	GLint viewLocation;
+	GLint projectionLocation;
+	GLint colorLocation;
+	glm::vec3 color;
+	//GLfloat vertices[];
+	
 	
 	RenderObject();
     ~RenderObject();
@@ -38,7 +42,7 @@ public:
     void draw(glm::mat4 &view, glm::mat4 &projection);
     void drawBounds();
     void setShader(Shader);
-   
+	void setColor(float, float, float);
     void init(GLfloat inVerts[], Shader);
 };
 
